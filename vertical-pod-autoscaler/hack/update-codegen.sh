@@ -24,13 +24,12 @@ CODEGEN_PKG=${CODEGEN_PKG:-$(cd ${SCRIPT_ROOT}; ls -d -1 ./vendor/k8s.io/code-ge
 source "${CODEGEN_PKG}/kube_codegen.sh"
 
 kube::codegen::gen_helpers \
-  --input-pkg-root k8s.io/autoscaler/vertical-pod-autoscaler/pkg/apis \
-  --output-base "$(dirname ${BASH_SOURCE})/../../../.." \
+  "$(dirname ${BASH_SOURCE})/../pkg/apis" \
   --boilerplate "${SCRIPT_ROOT}"/hack/boilerplate.go.txt
 
 kube::codegen::gen_client \
-  --input-pkg-root k8s.io/autoscaler/vertical-pod-autoscaler/pkg/apis \
-  --output-pkg-root k8s.io/autoscaler/vertical-pod-autoscaler/pkg/client \
-  --output-base "$(dirname ${BASH_SOURCE})/../../../.." \
+  "$(dirname ${BASH_SOURCE})/../pkg/apis" \
+  --output-pkg k8s.io/autoscaler/vertical-pod-autoscaler/pkg/client \
+  --output-dir "$(dirname ${BASH_SOURCE})/../pkg/client" \
   --boilerplate "${SCRIPT_ROOT}"/hack/boilerplate.go.txt \
   --with-watch
