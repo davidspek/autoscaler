@@ -82,7 +82,7 @@ func (m *mockPrometheusAPI) Flags(ctx context.Context) (prometheusv1.FlagsResult
 	panic("not implemented")
 }
 
-func (m *mockPrometheusAPI) LabelNames(ctx context.Context, matches []string, startTime time.Time, endTime time.Time) ([]string, prometheusv1.Warnings, error) {
+func (m *mockPrometheusAPI) LabelNames(ctx context.Context, matches []string, startTime time.Time, endTime time.Time, opts ...prometheusv1.Option) ([]string, prometheusv1.Warnings, error) {
 	panic("not implemented")
 }
 
